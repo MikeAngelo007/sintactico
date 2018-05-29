@@ -1,0 +1,3 @@
+set a 34;
+puts $a;
+return; #error sintactico

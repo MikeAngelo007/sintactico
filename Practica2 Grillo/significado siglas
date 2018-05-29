@@ -1,0 +1,18 @@
+EXPD   exresiones para declaracion
+VARID  varios IDs
+VAREXP varias expresiones
+EXP    cualquier expresion
+
+
+
+
+S      PRINT
+S      INPUT
+S      WHILE
+S      DO
+S      FOR
+S      SELECT
+S      IF
+S      SUB
+S      FUNCTION
+

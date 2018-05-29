@@ -1,0 +1,244 @@
+Gramatica TCL
+
+programa 			: subRutinaBloque instruccionBloque EOF;
+
+instruccionBloque	: instruccion instruccionBloque
+					| 'epsilon'
+					; 
+
+instruccion 		: declaracion ';'
+					| ifBloque
+					| whileBloque
+					| forBloque
+					| switchBloque
+					| leerEntrada ';'
+					| imprimirSalida ';'
+					| ejecucion ';'
+					;
+
+/********************Expresiones*************************************/
+
+expresion 			: valor binaria_expresion
+					| unaria_expresion
+					| '(' expresion ')' binaria_expresion
+					| unico_id binaria_expresion
+					| ejecucion binaria_expresion
+					;
+
+binaria_expresion 	: binario_operador expresion
+					| 'epsilon'
+					;
+
+unaria_expresion 	: unario_operador expresion;
+
+binario_operador	: '+' | '-' | '*' | '/' | '**' | '%' | '||' | '&&' | '==' | '!=' | '<' | '>' | '<=' | '>=' | 'ne' | 'eq';
+unario_operador		: '!' | '-';
+unico_id			: '$' ID array;
+
+/********************Subutinas**************************************/
+
+subRutinaBloque		: subRutinaDeclaracion subRutinaBloque
+					| 'epsilon' 
+					;
+
+subRutinaDeclaracion 	: 'proc' ID '{' subRutinaListaArgumentosDeclaracion '}' '{' instruccionBloqueSubrutina '}'; 
+
+subRutinaListaArgumentosDeclaracion	: subRutinaArgumentoDeclaracion subRutinaListaArgumentosDeclaracion
+									| 'epsilon'
+									;
+
+subRutinaArgumentoDeclaracion 		: '{' ID '}';
+
+instruccionBloqueSubrutina			: subRutinaInstruccion instruccionBloqueSubrutina
+									| 'epsilon'
+									;
+subRutinaInstruccion				: declaracion ';'
+									| ifBloqueSubrutica
+									| whileBloqueSubrutina
+									| forBloqueSubrutina
+									| switchBloqueSubrutina
+									| leerEntrada ';'
+									| imprimirSalida ';'
+									| ejecucion ';'
+									| returnSentencia ';'
+									;
+
+returnSentencia						: 'return' returnArgumentos;
+
+returnArgumentos					: unico_id
+									| ejecucion
+									| valor
+									| 'epsilon'
+									;
+
+ifBloqueSubrutica			: 'if' '{' expresion '}' 'then' '{' instruccionBloqueSubrutina '}' elseifBloqueSubrutina elseBloqueSubrutina;
+elseifBloqueSubrutina 		: elseifSubrutina elseifBloqueSubrutina
+							| 'epsilon'
+							;
+
+elseifSubrutina 			: 'elseif' '{' expresion '}' 'then' '{' instruccionBloqueSubrutina '}';
+elseBloqueSubrutina 		: elseSubBloqueSubrutina elseBloqueSubrutina
+							| 'epsilon'
+							;
+
+elseSubBloqueSubrutina 		: 'else' '{' instruccionBloqueSubrutina '}' ;
+
+forBloqueSubrutina 			: 'for' '{' 'set' ID forSetArgumentoSubrutina '}' '{' expresion '}' '{' 'incr' ID incrArgumentoSubrutina '}' '{' instruccionBloqueSubrutinaCiclo '}';
+
+forSetArgumentoSubrutina	: VALOR_ENTERO
+							| 'expr' '{' expresion '}'
+							| unico_id
+							;
+
+incrArgumentoSubrutina 		: VALOR_ENTERO
+							| 'epsilon'
+							;
+
+whileBloqueSubrutina 				: 'while' '{' expresion '}' '{' instruccionBloqueSubrutinaCiclo '}';
+
+instruccionBloqueSubrutinaCiclo 	: cicloInstruccionSubrutina instruccionBloqueSubrutinaCiclo
+									| 'epsilon'
+									;
+
+cicloInstruccionSubrutina 			: declaracion ';'
+									| ifBloqueSubrutica
+									| whileBloqueSubrutina
+									| forBloqueSubrutina
+									| switchBloqueSubrutina
+									| leerEntrada ';'
+									| ejecucion ';'
+									| 'break' ';'
+									| 'continue' ';'
+									| returnSentencia ';'
+									;
+
+switchBloqueSubrutina 				: 'switch' '$' ID '{' caseBloqueSubrutina defaultBloqueSubrutina '}';
+
+caseBloqueSubrutina					: caseSubBloqueSubrutina caseBloqueSubrutina
+									| 'epsilon'
+									;
+
+caseSubBloqueSubrutina 				: 'case' VALOR_ENTERO '{' instruccionBloqueSubrutinaCiclo '}';
+
+defaultBloqueSubrutina				: defaultSubBloqueSubrutina
+									| 'epsilon'
+									;
+
+defaultSubBloqueSubrutina 			: 'default' '{' instruccionBloqueSubrutinaCiclo '}';
+
+/********************Declaracion*************************************/
+
+declaracion 		: 'set' ID array valor_asignar;
+
+valor_asignar 		: valor
+					| ejecucion
+					| unico_id
+					;
+
+array 				: '(' array_indice ')'
+					| 'epsilon'
+					;
+
+array_indice 		: ejecucion
+					| valor
+					;
+
+/********************Entrada-Salida**********************************/
+
+leerEntrada 		: 'gets' 'stdin';
+
+imprimirSalida 		: 'puts' salidaArgumento;
+
+salidaArgumento 	: ejecucion
+					| valor
+					| unico_id
+					;
+
+/*******************Ejecucion****************************************/
+
+subRutinaListaArgumentosLlamada	: subrutinaArgumentoLlamada subRutinaListaArgumentosLlamada
+								| 'epsilon'
+								;
+
+subrutinaArgumentoLlamada 		: '{' subRutinaArgumentoFormato '}';
+
+subRutinaArgumentoFormato 		: ejecucion
+								| 'expr' '{' expresion '}'
+								| unico_id
+								| valor
+								;
+
+arrayLlamadaArgumentos 			: 'size' ID
+								| 'exists' ID
+								;
+
+ejecucion 			: '[' ejecucionCuerpo ']';
+
+ejecucionCuerpo 	: 'expr' '{' expresion '}'
+					| ID subrutinaArgumentoLlamada
+					| 'array' arrayLlamadaArgumentos
+					| leerEntrada
+					;
+
+/*************************Estructuras de Control*********************/
+
+
+ifBloque            : 'if' '{' expresion '}' 'then' '{' instruccionBloque '}' elseifBloque elseBloque;
+elseifBloque        : elseif elseifBloque
+                    | 'epsilon'
+                    ;
+elseif          	: 'elseif' '{' expresion '}' 'then' '{' instruccionBloque '}';
+elseBloque      	: elseSubBloque elseBloque
+                	| 'epsilon'
+                	;
+
+elseSubBloque   	: 'else' '{' instruccionBloque '}' ;
+
+forBloque       	: 'for' '{' 'set' ID forSetArgumento '}' '{' expresion '}' '{' 'incr' ID incrArgumento '}' '{' instruccionBloqueCiclo '}';
+
+forSetArgumento 	: VALOR_ENTERO
+                	| 'expr' '{' expresion '}'
+                	| unico_id
+                	;
+
+incrArgumento   	: VALOR_ENTERO
+					| 'epsilon'
+					;
+
+whileBloque     	: 'while' '{' expresion '}' '{' instruccionBloqueCiclo '}';
+
+instruccionBloqueCiclo  : cicloInstruccion instruccionBloqueCiclo
+                        | 'epsilon'
+                        ;
+
+cicloInstruccion        : declaracion ';'
+                        | ifBloque
+                        | whileBloque
+                        | forBloque
+                        | switchBloque
+                        | leerEntrada ';'
+                        | ejecucion ';'
+                        | 'break' ';'
+                        | 'continue' ';'	
+                        ;
+
+switchBloque            : 'switch' '$' ID '{' caseBloque defaultBloque '}';
+
+caseBloque              : caseSubBloque caseBloque
+                        | 'epsilon'
+                        ;
+
+caseSubBloque           : 'case' VALOR_ENTERO '{' instruccionBloqueCiclo '}';
+
+defaultBloque           : defaultSubBloque
+                        | 'epsilon'
+                        ;
+
+defaultSubBloque        : 'default' '{' instruccionBloqueCiclo '}';
+
+/**********************Valores***************************************/
+
+valor 					: VALOR_ENTERO
+						| VALOR_DOUBLE
+						| VALOR_STRING 
+						;

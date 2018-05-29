@@ -1,0 +1,20 @@
+function name (a$, b%, c&, d#, e!)
+    dim y as long
+    dim x(expresion, "sjkdfh", 3.0) as string
+    dim a, b, c(expresion) as single
+    dim shared global, g(expresion, expresion) as double
+
+    for i = expresion to expresion step expresion
+        for j = expresion to expresion
+            print i + j
+        next
+
+        for i = 10 to 123949 step 1
+
+        next i
+    next
+
+    final_case = ((f& ^ not xd)^xd^xd(not (not - 234) * not 14) * id not 16
+end function
+
+end

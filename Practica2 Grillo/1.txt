@@ -1,0 +1,7 @@
+nombre "adf $a";
+
+45.655 + 34 expr
+
+apellido\;
+
+12345

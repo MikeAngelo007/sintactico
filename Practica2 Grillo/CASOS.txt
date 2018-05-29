@@ -1,0 +1,73 @@
+
+procedimiento 56,676
+procedimiento (asdasd)
+
+a = "if"
+if a<b then 
+	abcd = ab + cd
+	dim X as integer
+elseif b<a then
+	dim Y as integer
+else
+	print hola
+end if
+
+a = "select"
+select case popo&
+	case "holi"
+		print a;b;c
+		input nombre$, edad
+		input nn
+	case "laura"
+		print maldo
+	case else
+		print jojojoj
+end select
+
+a = "while"
+while a(fsdf < 9)
+	print "casi que no"
+wend
+
+a = "do while"
+do
+	print "jajaajaja"
+loop while a<b
+
+a = "do until"
+do 
+	a = oiu + oiu - asd
+loop until popo == mierda
+
+a = "for"
+for i = XXX to 98687
+	print "bnbbn"
+next
+
+a = "for"
+for yuyu = asdasd to (safdasd<sdas) step erer
+	print holi
+next
+
+a = "sub"
+sub procedimiento
+	print "casi que no"
+end sub
+
+a = "sub"
+sub proced (nombre$ , edad)
+	print holi
+end sub
+
+a = "function"
+function func&
+	print "funciones"
+	a = 78
+end function
+
+a = "function"
+function FUn$ (popo$ , po)
+	print "con parametros"
+end function
+
+

@@ -1,0 +1,58 @@
+S      dim     SHA     ID    as    TPD
+S      CONST    DECLA
+CONST  const
+CONST  epsilon
+DECLA  identificador   SIMBOL1    =   EXPD
+SHA    shared
+SHA    epsilon
+ID     identificador   PARAM    VARID
+PARAM  (  EXPD  VAREXP )
+PARAM  epsilon
+VARID  , ID
+VARID  epsilon 
+VAREXP , EXPD 
+VAREXP epsilon
+EXPD   ( EXPD )
+EXPD   EXP
+EXP    VA OP
+EXP    UNID OP
+VA     UN VAL
+UNID   UN ID1
+ID1    identificador   PARAM    
+UN     -
+UN     not
+UN     epsilon
+EXPOP  VA OP
+EXPOP  UNID OP
+SIMBOL1 SIMBOL
+SIMBOL1 epsilon
+SIMBOL $
+SIMBOL %
+SIMBOL &
+SIMBOL !
+SIMBOL #
+TPD    integer
+TPD    double
+TPD    single
+TPD    long
+TPD    string
+VAL    valor_integer
+VAL    valor_single
+VAL    valor_double
+VAL    valor_string
+VAL    valor_long
+OP     epsilon
+OP     +       EXPOP
+OP     -       EXPOP
+OP     *       EXPOP
+OP     /       EXPOP
+OP     mod     EXPOP
+OP     xor     EXPOP
+OP     and     EXPOP
+OP     or      EXPOP
+OP     <       EXPOP
+OP     <=      EXPOP
+OP     >=      EXPOP
+OP     >       EXPOP
+OP     =       EXPOP
+OP     <>      EXPOP

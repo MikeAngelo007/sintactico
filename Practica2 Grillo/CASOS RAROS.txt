@@ -1,0 +1,55 @@
+
+a = "if do-until for"
+if a<b then 
+	
+	do 			
+
+		caso(6)
+		for i = XXX to 98687
+			print "bnbbn"
+		next
+
+	loop until popo == mierda
+
+elseif b<a then
+	
+
+
+
+
+else
+	
+
+
+
+end if
+
+
+a = "fun for ehile"
+function func&
+	
+	for i = XXX to 98687
+
+		while a(fsdf < 9)
+		print "hola"
+		wend
+
+
+	next
+
+end function
+
+a = "fun for while"
+function FUn$ (popo$ , po)
+	
+	for i = XXX to 98687
+	
+		while a(fsdf < 9)
+		print "hola"
+		wend
+
+	next
+
+end function
+
+

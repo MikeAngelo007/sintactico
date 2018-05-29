@@ -1,0 +1,24 @@
+
+a = "select do-until for "
+select case popo&
+	case "holi"
+		
+		do 
+			a = oiu + oiu - asd
+		loop until popo == mierda
+
+
+	case "laura"
+
+		for i = XXX to 98687
+			print "bnbbn"
+		next
+		
+	case else
+
+		for yuyu = asdasd to (safdasd<sdas) step erer
+			print holi
+		next
+
+		
+end select

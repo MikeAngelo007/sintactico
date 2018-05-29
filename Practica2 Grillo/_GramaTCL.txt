@@ -1,0 +1,150 @@
+S SRB IB eof
+IB I IB
+IB epsilon
+I D ;
+I IFB
+I WHILEB
+I FORB
+I SWICTHB
+I IMPUT ;
+I OUTPUT ;
+I EXE ;
+EXPR VAL BINEXPR
+EXPR UNEXPR
+EXPR ( EXPR ) BINEXPR
+EXPR ID BINEXPR
+EXPR EXE BINEXPR
+BINEXPR BINOP EXPR
+UNEXPR UNOP EXPR
+BINOP +
+BINOP - 
+BINOP * 
+BINOP / 
+BINOP ** 
+BINOP % 
+BINOP || 
+BINOP && 
+BINOP == 
+BINOP != 
+BINOP < 
+BINOP > 
+BINOP <= 
+BINOP >= 
+BINOP ne 
+BINOP eq
+UNOP ! 
+UNOP -
+ID $ id ARR;
+SRB proc id { SLAD } { IBS } 
+SLAD SAD SLAD
+SLAD epsilon
+SAD { id }
+IBS	SI IBS
+IBS epsilon
+SI D ;
+SI IFBS
+SI WHILEBS
+SI FORBS
+SI SWITCHBS
+SI IMPUT ;
+SI OUTPUT ;
+SI EXE ;
+SI RS ;
+RS return RA
+RA ID
+RA EXE
+RA VAL
+IFBS if { EXPR } then { IBS } ELSEIFBS ELSEBS
+ELSEIFBS ELSEIFS ELSEIFBS
+ELSEIFBS epsilon
+ELSEIFS	elseif { EXPR } then { IBS }
+ELSEBS ELSESBS ELSEBS
+ELSEBS epsilon
+ELSESBS else { IBS }
+FORBS for { set id FORSETAS } { EXPR } { incr id INCRAS } { IBSC }
+FORSETAS valor_entero
+FORSETAS 'expr' '{' EXPR '}'
+FORSETAS ID
+INCRAS valor_entero
+WHILEBS while { EXPR } { IBSC }
+IBSC CIS IBSC
+IBSC epsilon
+CIS D ;
+CIS IFBS
+CIS WHILEBS
+CIS FORBS
+CIS SWITCHBS
+CIS IMPUT ;
+CIS EXE ;
+CIS break ;
+CIS continue ;
+CIS RS ;
+SWITCHBS switch $ id { CBS DBS }
+CBS CSBS CBS
+CBS epsilon
+CSBS case valor_entero { IBSC }
+DBS DSBS
+DBS epsilon
+DSBS default { IBSC }
+D set id ARR VALASIG
+VALASIG VAL
+VALASIG EXE
+VALASIG ID
+ARR ( ARRIDX )
+ARR epsilon
+ARRIDX EXE
+ARRIDX VAL
+IMPUT gets stdin
+OUTPUT puts OUTA
+OUTA EXE
+OUTA VAL
+OUTA ID
+SLALL SALL SLALL
+SLALL epsilon
+SALL { SAF }
+SAF EXE
+SAF expr { EXPR }
+SAF ID
+SAF VAL
+ARRLLA size id
+ARRLLA exists id
+EXE [ EXEB ]
+EXEB expr { EXPR }
+EXEB id SALL
+EXEB array ARRLLA
+EXEB IMPUT
+IFB if { EXPR } then { IB } ELSEIFB ELSEB;
+ELSEIFB ELSEIF ELSEIFB
+ELSEIFB epsilon
+ELSEIF elseif { EXPR } then { IB }
+ELSEB ELSESB ELSEB
+ELSEB epsilon
+ELSESB else { IB }
+FORB for { set id FORSETA } { EXPR } { incr id INCRA } { IBC }
+FORSETA valor_entero
+FORSETA expr { EXPR }
+FORSETA ID
+INCRA valor_entero
+WHILEB while { EXPR } { IBC }
+IBC CI IBC
+IBC epsilon
+CI D ;
+CI IFB
+CI WHILEB
+CI FORB
+CI SWICTHB
+CI IMPUT ;
+CI EXE ;
+CI break ;
+CI continue ;
+CI RS ;
+SWICTHB switch $ id { CB DB }
+CB CSB CB
+CB epsilon
+CSB case valor_entero { IBC }
+DB DSB
+DB epsilon
+DSB default { IBC }
+VAL valor_entero
+VAL valor_double
+VAL valor_string

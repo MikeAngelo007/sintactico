@@ -1,0 +1,13 @@
+#Declaracion de cero o mas subrutinas
+proc sum {{a}{b}{c}}{
+	return [expr{$a + $b + $c}];
+}
+
+# Modulo Principal
+# Consiste de cero o mas instrucciones
+
+set var 10;
+
+for{set i 1}{$i <= 10}{incr i}{
+	puts $i;
+}

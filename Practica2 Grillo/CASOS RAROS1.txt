@@ -1,0 +1,29 @@
+
+a = "if select while do-while"
+if a<b then 
+
+	select case popo&
+	case "holi"
+		print a;b;c
+		input nombre$, edad
+		input nn
+	case "laura"
+		print maldo
+	case else
+		print jojojoj
+	end select
+
+elseif b<a then
+
+	while a(fsdf < 9)
+		print "casi que no"
+	wend
+
+else
+
+	do
+		print "jajaajaja"
+	loop while a<b
+
+	
+end if

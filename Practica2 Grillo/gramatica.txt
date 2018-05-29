@@ -1,0 +1,9 @@
+S A B C K
+K uno K
+K epsilon
+A dos B C
+A epsilon
+B C tres
+B epsilon
+C cuatro B
+C epsilon

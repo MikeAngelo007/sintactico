@@ -1,0 +1,3 @@
+if { 1 < 2 } then {
+	puts [ set x expr {1 + 2} ];
+}

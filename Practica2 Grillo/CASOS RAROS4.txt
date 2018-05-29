@@ -1,0 +1,50 @@
+a = "do until if"
+do 
+		
+	if a<b then 
+		abcd = ab + cd
+		dim X as integer
+	elseif b<a then
+		dim Y as integer
+	else
+		print hola
+	end if
+
+
+loop until popo == mierda
+
+
+
+a = "for select"
+for i = XXX to 98687
+	
+	caso (2)
+	select case popo&
+		case "holi"
+			print a;b;c
+			input nombre$, edad
+			input nn
+		case "laura"
+			print maldo
+		case else
+			print jojojoj
+	end select
+
+
+next
+
+a = "for if"
+for yuyu = asdasd to (safdasd<sdas) step erer
+	
+	if a<b then 
+		abcd = ab + cd
+		dim X as integer
+	elseif b<a then
+		dim Y as integer
+	else
+		print hola
+	end if
+
+next
+
+
