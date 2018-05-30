@@ -156,7 +156,7 @@ for regla in predicciones:
 noTerminales = sorted(primeros.keys())
 with open( 'Parser.py', 'w' ) as f:
 	sys.stdout = f
-	print("#Parser\n#Lenguajes de Programacion\n#Diego Cruz\n#Oscar Gomez")
+	print("#Parser\n#Lenguajes de Programacion\n#Miguel Tovar\n#Felipe Contreras\n#Alejandro Sierra\n")
 	print("import sys\n")
 	print("#Palabras Reservadas")
 	print("reservadas = ['if','else','elseif','then','for','while','switch','case',\n\t'break','set','puts','default','expr','continue','foreach','incr',\n\t'array','exists','size','proc','gets','stdin','return']")
