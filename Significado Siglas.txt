@@ -13,6 +13,7 @@ OUTPUT: imprimirSalida
 EXE: ejecucion
 EXPR: expresion
 VAL: valor
+VALM: valorMultiple
 BINEXPR: binaria_expresion
 UNEXPR: unaria_expresion
 ID: unico_id
@@ -22,6 +23,7 @@ ARR: array
 SLAD: subRutinaListaArgumentosDeclaracion
 IBS: instruccionBloqueSubrutina
 SAD: subRutinaArgumentoDeclaracion
+SADM: subRutinaArgumentoDeclaracionMultiple
 SI: subRutinaInstruccion
 IFBS: ifBloqueSubrutica
 WHILEBS: whileBloqueSubrutina
