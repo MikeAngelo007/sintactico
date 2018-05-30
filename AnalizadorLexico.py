@@ -5,7 +5,7 @@ import sys
 
 #Palabras Reservadas
 reservadas = ['if','else','elseif','then','for','while','switch','case',
-	'break','set','puts','default','expr','continue','foreach','incr',
+	'break','set','log','default','expr','continue','foreach','incr',
 	'array','exists','size','proc','gets','stdin','return']
 
 simbolos = {
@@ -20,7 +20,7 @@ simbolos = {
 	#Operadores Relacionales
 	'>=':'token_mayor_igual',
 	'<=':'token_menor_igual',
-	'eq':'token_igual_str',
+	'=':'token_igual_str',
 	'ne':'token_diff_str',
 	'==':'token_igual_num',
 	'!=':'token_diff_num',
@@ -179,7 +179,7 @@ while linea != '' :
 			#print('<'+token.token+','+str(token.fila+1)+','+str(token.columna+1)+'>' )
 			TOKENS.append(token)
 		elif token.token in simbolos.keys(): 
-			if token.token == 'ne' or token.token == 'eq':
+			if token.token == 'ne' or token.token == '=':
 				token.tipo = simbolos [ token.token ]
 			#print('<'+token.tipo+','+str(token.fila+1)+','+str(token.columna+1)+'>' )
 			TOKENS.append(token)

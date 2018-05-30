@@ -1,17 +1,17 @@
 #sub rutinas declaracion
 
 proc identificador { {argumento1} {argumento2} {argumento3}}{
-    puts $a;
+    log $a;
     return $a;
 }
 
 proc identificador { {argumento1} {argumento2} {argumento3}}{
-    puts $a;
+    log $a;
     return;
 }
 
 proc identificador { {argumento1} {argumento2} {argumento3}}{
-    puts $a;
+    log $a;
 }
 
 proc identificador { {argumento1} {argumento2} {argumento3}}{
@@ -21,7 +21,7 @@ proc identificador { {argumento1} {argumento2} {argumento3}}{
     return;
     return;
     return;
-    puts "asdsad";
+    log "asdsad";
 }
 
 proc identificador { }{
@@ -31,7 +31,7 @@ proc identificador { }{
     return;
     return;
     return;
-    puts "asdsad";
+    log "asdsad";
 }
 
 proc identificador { {
@@ -41,5 +41,5 @@ proc identificador { {
     return;
     return;
     return;
-    puts "asdsad";
+    log "asdsad";
 }

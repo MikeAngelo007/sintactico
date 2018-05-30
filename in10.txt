@@ -1,7 +1,7 @@
 #sub rutinas llamado
 
 proc identificador { {argumento1} {argumento2} {argumento3}}{
-    puts $a;
+    log $a;
     return $a;
 }
 

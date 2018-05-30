@@ -6,4 +6,4 @@
 [rutina];
 [rutina {$argumento} {$argumento2} {expr{2 + 2}}]; #rutinas
 [gets stdin]; #ejecutable dentro de agrupacion
-[puts 2]; #no es valido dentro de agrupacion
+[log 2]; #no es valido dentro de agrupacion

@@ -8,7 +8,7 @@ if{3 <=5} then {
 
 }
 elseif{2 ** "sdfsdf"} then{
-    puts "asdas";
+    log "asdas";
 }
 elseif{1} then{}
 elseif{2} then{}

@@ -159,7 +159,7 @@ with open( 'Parser.py', 'w' ) as f:
 	print("#Parser\n#Lenguajes de Programacion\n#Miguel Tovar\n#Felipe Contreras\n#Alejandro Sierra\n")
 	print("import sys\n")
 	print("#Palabras Reservadas")
-	print("reservadas = ['if','else','elseif','then','for','while','switch','case',\n\t'break','set','puts','default','expr','continue','foreach','incr',\n\t'array','exists','size','proc','gets','stdin','return']")
+	print("reservadas = ['if','else','elseif','then','for','while','switch','case',\n\t'break','set','log','default','expr','continue','foreach','incr',\n\t'array','exists','size','proc','gets','stdin','return']")
 	t = "\t"
 	print("\nsimbolos = {")
 	print(t+"'{':'token_llave_izq',")

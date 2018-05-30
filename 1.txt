@@ -9,5 +9,5 @@ proc sum {{a}{b}{c}}{
 set var 10;
 
 for{set i 1}{$i <= 10}{incr i}{
-	puts $i;
+	log $i;
 }

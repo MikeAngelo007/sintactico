@@ -1,12 +1,12 @@
 #Parser
 #Lenguajes de Programacion
-#Diego Cruz
-#Oscar Gomez
+#
+#
 import sys
 
 #Palabras Reservadas
 reservadas = ['if','else','elseif','then','for','while','switch','case',
-	'break','set','puts','default','expr','continue','foreach','incr',
+	'break','set','log','default','expr','continue','foreach','incr',
 	'array','exists','size','proc','gets','stdin','return']
 
 simbolos = {
@@ -21,7 +21,7 @@ simbolos = {
 	#Operadores Relacionales
 	'>=':'token_mayor_igual',
 	'<=':'token_menor_igual',
-	'eq':'token_igual_str',
+	'=':'token_igual_str',
 	'ne':'token_diff_str',
 	'==':'token_igual_num',
 	'!=':'token_diff_num',
@@ -189,13 +189,13 @@ def ARRLLA():
 	else:
 		errorSintaxis( ['size', 'exists'] )
 def BINEXPR():
-	if token.token in  ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', 'eq']  or token.tipo in ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', 'eq'] :
+	if token.token in  ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', '=']  or token.tipo in ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', '='] :
 		BINOP();
 		EXPR();
 	elif token.token in  [')', '}']  or token.tipo in [')', '}'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', 'eq', ')', '}'] )
+		errorSintaxis( ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', '=', ')', '}'] )
 def BINOP():
 	if token.token in  ['+']  or token.tipo in ['+'] :
 		emparejar('+')
@@ -227,10 +227,10 @@ def BINOP():
 		emparejar('>=')
 	elif token.token in  ['ne']  or token.tipo in ['ne'] :
 		emparejar('ne')
-	elif token.token in  ['eq']  or token.tipo in ['eq'] :
-		emparejar('eq')
+	elif token.token in  ['=']  or token.tipo in ['='] :
+		emparejar('=')
 	else:
-		errorSintaxis( ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', 'eq'] )
+		errorSintaxis( ['+', '-', '*', '/', '**', '%', '||', '&&', '==', '!=', '<', '>', '<=', '>=', 'ne', '='] )
 def CB():
 	if token.token in  ['case']  or token.tipo in ['case'] :
 		CSB();
@@ -262,7 +262,7 @@ def CI():
 	elif token.token in  ['gets']  or token.tipo in ['gets'] :
 		IMPUT();
 		emparejar(';')
-	elif token.token in  ['puts']  or token.tipo in ['puts'] :
+	elif token.token in  ['log']  or token.tipo in ['log'] :
 		OUTPUT();
 		emparejar(';')
 	elif token.token in  ['[']  or token.tipo in ['['] :
@@ -275,7 +275,7 @@ def CI():
 		emparejar('continue')
 		emparejar(';')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'break', 'continue'] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'break', 'continue'] )
 def CIS():
 	if token.token in  ['set']  or token.tipo in ['set'] :
 		D();
@@ -365,18 +365,18 @@ def ELSEB():
 	if token.token in  ['else']  or token.tipo in ['else'] :
 		ELSESB();
 		ELSEB();
-	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue'] :
+	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue'] )
+		errorSintaxis( ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue'] )
 def ELSEBS():
 	if token.token in  ['else']  or token.tipo in ['else'] :
 		ELSESBS();
 		ELSEBS();
-	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue'] :
+	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue'] )
+		errorSintaxis( ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue'] )
 def ELSEIF():
 	if token.token in  ['elseif']  or token.tipo in ['elseif'] :
 		emparejar('elseif')
@@ -393,18 +393,18 @@ def ELSEIFB():
 	if token.token in  ['elseif']  or token.tipo in ['elseif'] :
 		ELSEIF();
 		ELSEIFB();
-	elif token.token in  ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue']  or token.tipo in ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue'] :
+	elif token.token in  ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue']  or token.tipo in ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['elseif', 'else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}', 'break', 'continue'] )
+		errorSintaxis( ['elseif', 'else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}', 'break', 'continue'] )
 def ELSEIFBS():
 	if token.token in  ['elseif']  or token.tipo in ['elseif'] :
 		ELSEIFS();
 		ELSEIFBS();
-	elif token.token in  ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue']  or token.tipo in ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue'] :
+	elif token.token in  ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue']  or token.tipo in ['else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['elseif', 'else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}', 'break', 'continue'] )
+		errorSintaxis( ['elseif', 'else', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}', 'break', 'continue'] )
 def ELSEIFS():
 	if token.token in  ['elseif']  or token.tipo in ['elseif'] :
 		emparejar('elseif')
@@ -559,38 +559,38 @@ def I():
 	elif token.token in  ['gets']  or token.tipo in ['gets'] :
 		IMPUT();
 		emparejar(';')
-	elif token.token in  ['puts']  or token.tipo in ['puts'] :
+	elif token.token in  ['log']  or token.tipo in ['log'] :
 		OUTPUT();
 		emparejar(';')
 	elif token.token in  ['[']  or token.tipo in ['['] :
 		EXE();
 		emparejar(';')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '['] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '['] )
 def IB():
-	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '['] :
+	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '['] :
 		I();
 		IB();
 	elif token.token in  ['eof', '}']  or token.tipo in ['eof', '}'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof', '}'] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof', '}'] )
 def IBC():
-	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'break', 'continue'] :
+	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'break', 'continue']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'break', 'continue'] :
 		CI();
 		IBC();
 	elif token.token in  ['}']  or token.tipo in ['}'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'break', 'continue', '}'] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'break', 'continue', '}'] )
 def IBS():
-	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return'] :
+	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return'] :
 		SI();
 		IBS();
 	elif token.token in  ['}']  or token.tipo in ['}'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return', '}'] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return', '}'] )
 def IBSC():
 	if token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', '[', 'break', 'continue', 'return']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', '[', 'break', 'continue', 'return'] :
 		CIS();
@@ -664,11 +664,11 @@ def OUTA():
 	else:
 		errorSintaxis( ['[', 'valor_entero', 'valor_double', 'valor_string', '$'] )
 def OUTPUT():
-	if token.token in  ['puts']  or token.tipo in ['puts'] :
-		emparejar('puts')
+	if token.token in  ['log']  or token.tipo in ['log'] :
+		emparejar('log')
 		OUTA();
 	else:
-		errorSintaxis( ['puts'] )
+		errorSintaxis( ['log'] )
 def RA():
 	if token.token in  ['$']  or token.tipo in ['$'] :
 		ID();
@@ -687,12 +687,12 @@ def RS():
 	else:
 		errorSintaxis( ['return'] )
 def S():
-	if token.token in  ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof']  or token.tipo in ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof'] :
+	if token.token in  ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof']  or token.tipo in ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof'] :
 		SRB();
 		IB();
 		emparejar('eof')
 	else:
-		errorSintaxis( ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof'] )
+		errorSintaxis( ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof'] )
 def SAD():
 	if token.token in  ['{']  or token.tipo in ['{'] :
 		emparejar('{')
@@ -736,7 +736,7 @@ def SI():
 	elif token.token in  ['gets']  or token.tipo in ['gets'] :
 		IMPUT();
 		emparejar(';')
-	elif token.token in  ['puts']  or token.tipo in ['puts'] :
+	elif token.token in  ['log']  or token.tipo in ['log'] :
 		OUTPUT();
 		emparejar(';')
 	elif token.token in  ['[']  or token.tipo in ['['] :
@@ -746,7 +746,7 @@ def SI():
 		RS();
 		emparejar(';')
 	else:
-		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'return'] )
+		errorSintaxis( ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'return'] )
 def SLAD():
 	if token.token in  ['{']  or token.tipo in ['{'] :
 		SAD();
@@ -767,10 +767,10 @@ def SRB():
 	if token.token in  ['proc']  or token.tipo in ['proc'] :
 		SRD();
 		SRB();
-	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof'] :
+	elif token.token in  ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof']  or token.tipo in ['set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof'] :
 		emparejar('epsilon')
 	else:
-		errorSintaxis( ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'puts', '[', 'eof'] )
+		errorSintaxis( ['proc', 'set', 'if', 'while', 'for', 'switch', 'gets', 'log', '[', 'eof'] )
 def SRD():
 	if token.token in  ['proc']  or token.tipo in ['proc'] :
 		emparejar('proc')
@@ -887,7 +887,7 @@ while linea != '' :
 			#print('<'+token.token+','+str(token.fila+1)+','+str(token.columna+1)+'>' ) 
 			TOKENS.append(token)
 		elif token.token in simbolos.keys(): 
-			if token.token == 'ne' or token.token == 'eq':
+			if token.token == 'ne' or token.token == '=':
 				token.tipo = simbolos [ token.token ]
 			#print('<'+token.tipo+','+str(token.fila+1)+','+str(token.columna+1)+'>' )
 			TOKENS.append(token)

@@ -6,11 +6,11 @@ gets stdin;
 
 set a [gets stdin];
 
-puts $a;
+log $a;
 
-puts $a(2);
-puts [array size a];
+log $a(2);
+log [array size a];
 
-puts [expr{ 2 + 2}];
+log [expr{ 2 + 2}];
 
-puts expr{ 2 + 2}; #error
+log expr{ 2 + 2}; #error

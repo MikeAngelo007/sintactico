@@ -6,8 +6,8 @@ switch $variable{
 
     }
     case 2{
-        puts 3;
-        puts 2;
+        log 3;
+        log 2;
         gets stdin;
         [sum];
     }
@@ -26,8 +26,8 @@ switch $variable{
 
     }
     case 2{
-        puts 3;
-        puts 2;
+        log 3;
+        log 2;
         gets stdin;
         [sum];
     }
@@ -43,8 +43,8 @@ switch $variable{
 
     }
     case 2{
-        puts 3;
-        puts 2;
+        log 3;
+        log 2;
         gets stdin;
         [sum];
     }
