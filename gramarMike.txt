@@ -41,7 +41,7 @@ SRB epsilon
 SRD funcion id ( SLAD ) IBS end 
 SLAD SAD SLAD
 SLAD epsilon
-SAD id SADM
+SAD VAL SADM
 SADM , SAD
 SADM epsilon 
 IBS	SI IBS
@@ -96,7 +96,7 @@ DSBS default { IBSC }
 D id = VALASIG
 VALASIG VAL
 VALASIG ID
-VALASIG id ( )
+VALASIG id ( SLAD )
 VALASIG valor_string | valor_string
 VALASIG ARR
 ARR [ ARRIDX ]
