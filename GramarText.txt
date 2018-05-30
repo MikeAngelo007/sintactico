@@ -68,6 +68,11 @@ ELSEBS ELSESBS ELSEBS
 ELSEBS epsilon
 ELSESBS else { IBS }
 FORBS for ID in EXPR { IBSC }
+FORSETAS valor_entero
+FORSETAS expr { EXPR }
+FORSETAS ID
+INCRAS valor_entero
+INCRAS epsilon
 WHILEBS while EXPR { IBSC }
 IBSC CIS IBSC
 IBSC epsilon
@@ -88,17 +93,17 @@ CSBS case valor_entero { IBSC }
 DBS DSBS
 DBS epsilon
 DSBS default { IBSC }
-VALM , VAL
-VALM epsilon
-ARRIDX VAL VALM
-ARR [ ARRIDX ]
-ARR epsilon
 D id = VALASIG
 VALASIG VAL
 VALASIG ID
 VALASIG id ( SLAD )
 VALASIG valor_string | valor_string
 VALASIG ARR
+ARR [ ARRIDX ]
+ARR epsilon
+ARRIDX VAL VALM
+VALM , VAL
+VALM epsilon
 IMPUT gets stdin
 OUTPUT log OUTA
 OUTA EXE
@@ -124,6 +129,11 @@ ELSEB ELSESB ELSEB
 ELSEB epsilon
 ELSESB else { IB }
 FORB for ID in EXPR { IBC }
+FORSETA valor_entero
+FORSETA expr { EXPR }
+FORSETA ID
+INCRA valor_entero
+INCRA epsilon
 WHILEB while EXPR { IBC }
 IBC CI IBC
 IBC epsilon

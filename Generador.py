@@ -118,6 +118,7 @@ for regla in predicciones:
 	#Separa el string leido como un arreglo de strings y toma  el no terminal  de la izquierda
 	linea = regla.split()
 	llave = linea.pop(0)
+	print (llave)
 	while linea != "":
 		noTerminal = linea.pop(0)
 		caracter = ord(noTerminal[0])
